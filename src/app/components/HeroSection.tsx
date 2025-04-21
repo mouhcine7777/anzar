@@ -4,10 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
-    setIsLoaded(true);
 
     // Smooth scroll function
     const smoothScroll = (target: string) => {
