@@ -22,14 +22,14 @@ const MenuSection = () => {
       subtitle: "Curated Selection",
       description: "World's finest vintages and rare finds",
       image: "/champagne-wines-bg.jpg",
-      link: "/menu/champagne-wines"
+      link: "/menu/champagne"
     },
     {
       title: "BEERS & DRINKS",
       subtitle: "Global Collections",
       description: "International craft and premium labels",
       image: "/beers-drinks-bg.jpg",
-      link: "/menu/beers-drinks"
+      link: "/menu/beers"
     },
     {
       title: "À PARTAGER",
