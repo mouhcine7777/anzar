@@ -66,7 +66,7 @@ const StickyHeader = () => {
                   src="/logo.png" 
                   alt="Restaurant Logo" 
                   className={`transition-all duration-500 ${
-                    isScrolled ? 'h-12' : 'h-16'
+                    isScrolled ? 'h-10' : 'h-12'
                   }`}
                 />
               </Link>

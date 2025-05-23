@@ -80,23 +80,11 @@ const MenuSection = () => {
       
       <div className="container mx-auto max-w-7xl px-4 relative z-10">
         {/* Creative Section Header */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="text-center mb-24 relative"
-        >
+        <div className="text-center mb-24 relative">
           <div className="absolute inset-0 flex justify-center items-center opacity-10">
             <span className="text-9xl font-serif text-amber-500">Menu</span>
           </div>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="w-24 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-8"
-          />
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-8" />
           <h2 className="text-amber-100 text-sm tracking-[0.4em] mb-4 uppercase">Experience</h2>
           <h1 className="text-5xl md:text-6xl font-serif text-amber-400 mb-4">
             Our Selection
@@ -104,17 +92,13 @@ const MenuSection = () => {
           <p className="text-amber-100/70 text-lg font-light max-w-2xl mx-auto">
             A journey through flavors, carefully crafted for your palate
           </p>
-        </motion.div>
+        </div>
 
         {/* Card Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {menuItems.map((item, index) => (
-            <motion.div
+            <div
               key={item.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.15 }}
               className="perspective"
             >
               {/* Card Design - Default state is like the hover state */}
@@ -129,8 +113,12 @@ const MenuSection = () => {
                     <img 
                       src={item.image} 
                       alt={item.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = "/api/placeholder/400/400";
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1208] via-[#1a1208]/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1208]/90 via-[#1a1208]/40 to-transparent" />
                   </div>
 
                   {/* Card Content */}
@@ -184,18 +172,12 @@ const MenuSection = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Bottom Section */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-24 text-center relative"
-        >
+        <div className="mt-24 text-center relative">
           <p className="text-amber-200/40 font-light text-sm tracking-[0.3em] uppercase mb-4">
             Oriental Elegance
           </p>
@@ -204,7 +186,7 @@ const MenuSection = () => {
             <span className="text-amber-500/60">✧</span>
             <div className="h-px w-20 bg-gradient-to-l from-transparent to-amber-500/30" />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,10 @@
 "use client";
 import HeroSection from "./components/HeroSection";
-import MenuSection from "./components/MenuSection";
-
+import AboutAnzar from "./components/AboutAnzar";
+import MotDuChef from "./components/MotDuChef";
+import Artists from "./components/Artists";
+import DesignerSection from "./components/DesignerSection";
+import Footer from "./components/Footer";
 
 
 
@@ -9,7 +12,11 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <MenuSection />
+      <AboutAnzar />
+      <MotDuChef />
+      <Artists />
+      <DesignerSection />
+      <Footer />
     </main>
   );
 }

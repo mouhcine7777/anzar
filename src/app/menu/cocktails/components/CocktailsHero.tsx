@@ -1,12 +1,10 @@
 'use client';
 
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
-const HeroSection = () => {
+const DessertHeroSection = () => {
   useEffect(() => {
-
     // Smooth scroll function
     const smoothScroll = (target: string) => {
       const element = document.querySelector(target);
@@ -18,21 +16,21 @@ const HeroSection = () => {
       }
     };
 
-    // Add click event listener to menu links
-    const menuLinks = document.querySelectorAll('a[href="#menu"]');
-    menuLinks.forEach(link => {
+    // Add click event listener to dessert menu links
+    const dessertLinks = document.querySelectorAll('a[href="#dessert-menu"]');
+    dessertLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        smoothScroll('#menu');
+        smoothScroll('#dessert-menu');
       });
     });
 
     // Cleanup event listeners
     return () => {
-      menuLinks.forEach(link => {
+      dessertLinks.forEach(link => {
         link.removeEventListener('click', (e) => {
           e.preventDefault();
-          smoothScroll('#menu');
+          smoothScroll('#dessert-menu');
         });
       });
     };
@@ -48,8 +46,8 @@ const HeroSection = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="/bg.jpg" 
-          alt="ANZAR Restaurant Background" 
+          src="/desserts-bg.jpg" 
+          alt="ANZAR Desserts Background" 
           className="w-full h-full object-cover brightness-50"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
@@ -57,18 +55,16 @@ const HeroSection = () => {
 
       {/* Content Container */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full text-center text-white px-4">
-        {/* Logo with simple fade in */}
+        {/* Dessert Title with simple fade in */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mb-8"
         >
-          <img 
-            src="/logo.png" 
-            alt="ANZAR Logo" 
-            className="w-80 h-auto mx-auto"
-          />
+          <h1 className="text-6xl md:text-7xl font-serif text-amber-50">
+            Desserts
+          </h1>
         </motion.div>
 
         {/* Simple ornamental divider */}
@@ -90,7 +86,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-[#ad761d] font-serif italic text-xl tracking-widest mb-8"
         >
-          - Oriental Fine Dining & Atmosphere -
+          - Sweet Finales & Culinary Poetry -
         </motion.p>
 
         {/* Subheadline */}
@@ -100,8 +96,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 1 }}
           className="text-xl md:text-2xl mb-12 max-w-2xl font-light text-amber-50/90"
         >
-          Where oriental traditions meet contemporary elegance, 
-          <br className="hidden md:block" /> creating an unforgettable culinary journey
+          Indulge in our exquisite dessert creations,
+          <br className="hidden md:block" /> where Eastern spices meet sweet artistry
         </motion.p>
 
         {/* CTA Button */}
@@ -112,12 +108,12 @@ const HeroSection = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link 
-            href="/menu" 
-            className="bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-amber-50 py-4 px-12 transition-all duration-300 tracking-widest uppercase text-sm font-medium shadow-lg border border-amber-600/30 inline-block"
+          <a 
+            href="#dessert-menu" 
+            className="bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-amber-50 py-4 px-12 transition-all duration-300 tracking-widest uppercase text-sm font-medium shadow-lg border border-amber-600/30"
           >
-            Explore Our Menu
-          </Link>
+            Explore Desserts
+          </a>
         </motion.div>
 
         {/* Simple scroll indicator */}
@@ -127,7 +123,7 @@ const HeroSection = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="flex flex-col items-center">
-            <p className="text-amber-100/70 text-xs mb-3 tracking-widest font-light">SCROLL TO DISCOVER</p>
+            <p className="text-amber-100/70 text-xs mb-3 tracking-widest font-light">SCROLL TO INDULGE</p>
             <div className="h-8 w-px bg-gradient-to-b from-amber-100/70 to-transparent" />
           </div>
         </motion.div>
@@ -136,4 +132,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default DessertHeroSection;

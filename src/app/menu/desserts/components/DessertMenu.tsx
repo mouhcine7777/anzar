@@ -1,10 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 
-// Define the Dessert type without ID
+// Define the Dessert type without subtitle
 interface Dessert {
   name: string;
-  subtitle: string;
   price: number;
   shortDescription: string;
   fullDescription: string;
@@ -15,57 +14,49 @@ const DessertMenuSection = () => {
   
   const desserts: Dessert[] = [
     {
-      name: "Fondant au Chocolat à l'Orange",
-      subtitle: "Glace Vanille",
+      name: "Fondant au Chocolat à l'Orange Glace Vanille",
       price: 120,
       shortDescription: "Chocolat fondant à l'essence d'orange",
       fullDescription: "Un gâteau au chocolat chaud indulgent avec un cœur coulant infusé de zeste d'orange, servi avec une glace à la vanille de Madagascar et des écorces d'orange confites. Le contraste du chocolat chaud et de la glace froide crée un délice sensoriel qui honore les traditions pâtissières françaises."
     },
     {
       name: "Tarte au Citron Meringuée Revisitée",
-      subtitle: "",
       price: 120,
       shortDescription: "Tarte au citron réinventée avec techniques modernes",
       fullDescription: "L'interprétation contemporaine de notre chef de la tarte au citron classique présente une croûte sablée au beurre, une crème au citron soyeuse infusée à la bergamote, et un nuage de meringue italienne caramélisée à la perfection. Servie avec un sorbet au yuzu et décorée de feuilles d'or comestibles et de micro-herbes fraîches."
     },
     {
-      name: "Sablé Chocolat-Framboise",
-      subtitle: "avec Glace Vanille",
+      name: "Sablé Chocolat-Framboise avec Glace Vanille",
       price: 120,
       shortDescription: "Sablé chocolat-framboise avec glace vanille",
       fullDescription: "Une délicate base de sablé au chocolat superposée de ganache au chocolat noir et de compote de framboises fraîches, garnie de framboises lyophilisées et accompagnée d'une glace maison à la vanille. L'interaction des textures et des températures crée une symphonie de sensations."
     },
     {
-      name: "Pavlova aux Fruits Rouges",
-      subtitle: "et à l'Eau de Rose",
+      name: "Pavlova aux Fruits Rouges et à l'Eau de Rose",
       price: 120,
       shortDescription: "Meringue croustillante aux fruits rouges et eau de rose",
       fullDescription: "Une coque de meringue légère comme un nuage avec un cœur moelleux, surmontée de crème Chantilly infusée à l'eau de rose et d'un assortiment de fruits rouges frais. Finie avec une légère poudre de pistache et des pétales de rose comestibles. Le délicat arôme d'eau de rose évoque les jardins de Damas."
     },
     {
       name: "Tiramisu aux Dattes",
-      subtitle: "",
       price: 110,
       shortDescription: "Tiramisu infusé aux dattes et café arabe",
       fullDescription: "Une touche orientale sur ce classique italien, avec des couches de biscuits imbibés de dattes, de crème au mascarpone parfumée à la cardamome, et un riche sirop de café arabe. Saupoudré de cacao et garni de morceaux de dattes caramélisées et de feuilles d'or pour une finition opulente."
     },
     {
       name: "Jawhara à la Fleur d'Oranger",
-      subtitle: "",
       price: 90,
       shortDescription: "Joyau à la fleur d'oranger avec notes de miel",
       fullDescription: "Une pâtisserie traditionnelle du Moyen-Orient transformée en un dessert élégant. Couches de pâte filo remplies de crème parfumée à la fleur d'oranger, pistaches concassées et miel de fleurs sauvages. Servie avec une quenelle de glace au miel et lavande, décorée de fleurs d'oranger cristallisées."
     },
     {
       name: "Gâteau Anzar au Safran",
-      subtitle: "",
       price: 100,
       shortDescription: "Notre gâteau signature infusé au safran",
       fullDescription: "Le joyau de notre carte des desserts, nommé d'après notre restaurant. Un délicat gâteau moelleux infusé de fils de safran premium, superposé de crème au beurre à l'eau de rose et de pistaches concassées. Garni de feuilles d'or 24 carats et servi avec une crème anglaise à la cardamome."
     },
     {
       name: "Sélection de Fruits de Saison",
-      subtitle: "",
       price: 120,
       shortDescription: "Fruits de saison sélectionnés avec touches exotiques",
       fullDescription: "Une sélection soigneusement choisie de fruits de saison premium, élégamment présentée et rehaussée d'éléments exotiques. Selon la saison, cela peut inclure des figues au miel, des baies au sirop de grenade, ou des fruits tropicaux glacés au fruit de la passion, accompagnés d'un sorbet maison."
@@ -180,9 +171,6 @@ const DessertMenuSection = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-2xl font-serif text-amber-100 mb-1">{dessert.name}</h3>
-                    {dessert.subtitle && (
-                      <p className="text-amber-400/80 text-sm">{dessert.subtitle}</p>
-                    )}
                   </div>
                   <div className="text-xl font-serif text-amber-400">
                     {dessert.price}
@@ -194,23 +182,15 @@ const DessertMenuSection = () => {
                   {dessert.shortDescription}
                 </p>
                 
-                {/* Expanded Content with AnimatePresence for smooth animation */}
-                <AnimatePresence>
-                  {expandedDessertIndex === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="h-px w-full bg-gradient-to-r from-transparent via-amber-500/30 to-transparent my-4" />
-                      <p className="text-amber-100/90 text-sm">
-                        {dessert.fullDescription}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Expanded Content - no animation */}
+                {expandedDessertIndex === index && (
+                  <div className="mt-4">
+                    <div className="h-px w-full bg-gradient-to-r from-transparent via-amber-500/30 to-transparent mb-4" />
+                    <p className="text-amber-100/90 text-sm">
+                      {dessert.fullDescription}
+                    </p>
+                  </div>
+                )}
                 
                 {/* Details Button */}
                 <div 
@@ -220,18 +200,9 @@ const DessertMenuSection = () => {
                     {expandedDessertIndex === index ? 'Moins' : 'Détails'}
                     <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-400 group-hover:w-full transition-all duration-300" />
                   </span>
-                  <svg 
-                    className="w-4 h-4 ml-2" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                    style={{ 
-                      transform: expandedDessertIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 0.3s ease'
-                    }}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <span className="ml-2 text-amber-400">
+                    {expandedDessertIndex === index ? '−' : '+'}
+                  </span>
                 </div>
               </div>
             </motion.div>
